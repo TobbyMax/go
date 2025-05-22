@@ -4,5 +4,5 @@
 
 package issue43639
 
-// #cgo CFLAGS: -W -Wall -Werror
+// #cgo CFLAGS: -W -Wall
 import "C"

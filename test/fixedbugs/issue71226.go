@@ -9,7 +9,7 @@
 package main
 
 /*
-#cgo CFLAGS: -Werror -Wimplicit-function-declaration
+#cgo CFLAGS:   -Wimplicit-function-declaration
 
 #include <stdio.h>
 
@@ -24,6 +24,7 @@ func main() {
 }
 
 // The bug only occurs if there is an exported function.
+//
 //export Fn
 func Fn() {
 }

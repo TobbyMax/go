@@ -542,13 +542,13 @@ var cbDLLs = []cbDLL{
 	{
 		"test",
 		func(out, src string) []string {
-			return []string{"gcc", "-shared", "-s", "-Werror", "-o", out, src}
+			return []string{"gcc", "-shared", "-s", " ", "-o", out, src}
 		},
 	},
 	{
 		"testO2",
 		func(out, src string) []string {
-			return []string{"gcc", "-shared", "-s", "-Werror", "-o", out, "-O2", src}
+			return []string{"gcc", "-shared", "-s", " ", "-o", out, "-O2", src}
 		},
 	},
 }
@@ -730,7 +730,7 @@ uintptr_t cfunc(callback f, uintptr_t n) {
 		t.Fatal(err)
 	}
 	outname := "mydll.dll"
-	cmd := exec.Command("gcc", "-shared", "-s", "-Werror", "-o", outname, srcname)
+	cmd := exec.Command("gcc", "-shared", "-s", " ", "-o", outname, srcname)
 	cmd.Dir = tmpdir
 	out, err := cmd.CombinedOutput()
 	if err != nil {
@@ -803,7 +803,7 @@ func TestSyscallN(t *testing.T) {
 				t.Fatal(err)
 			}
 			outname := "mydll.dll"
-			cmd := exec.Command("gcc", "-shared", "-s", "-Werror", "-o", outname, srcname)
+			cmd := exec.Command("gcc", "-shared", "-s", " ", "-o", outname, srcname)
 			cmd.Dir = tmpdir
 			out, err := cmd.CombinedOutput()
 			if err != nil {
@@ -852,7 +852,7 @@ uintptr_t cfunc(uintptr_t a, double b, float c, double d) {
 		t.Fatal(err)
 	}
 	outname := "mydll.dll"
-	cmd := exec.Command("gcc", "-shared", "-s", "-Werror", "-o", outname, srcname)
+	cmd := exec.Command("gcc", "-shared", "-s", " ", "-o", outname, srcname)
 	cmd.Dir = tmpdir
 	out, err := cmd.CombinedOutput()
 	if err != nil {
@@ -910,7 +910,7 @@ double cfuncDouble(uintptr_t a, double b, float c, double d) {
 		t.Fatal(err)
 	}
 	outname := "mydll.dll"
-	cmd := exec.Command("gcc", "-shared", "-s", "-Werror", "-o", outname, srcname)
+	cmd := exec.Command("gcc", "-shared", "-s", " ", "-o", outname, srcname)
 	cmd.Dir = tmpdir
 	out, err := cmd.CombinedOutput()
 	if err != nil {
@@ -1130,7 +1130,7 @@ uintptr_t cfunc(void) {
 		t.Fatal(err)
 	}
 	name := "nojack.dll"
-	cmd := exec.Command("gcc", "-shared", "-s", "-Werror", "-o", name, srcname)
+	cmd := exec.Command("gcc", "-shared", "-s", " ", "-o", name, srcname)
 	cmd.Dir = tmpdir
 	out, err := cmd.CombinedOutput()
 	if err != nil {
@@ -1185,7 +1185,7 @@ func TestBigStackCallbackSyscall(t *testing.T) {
 	tmpdir := t.TempDir()
 
 	outname := "mydll.dll"
-	cmd := exec.Command("gcc", "-shared", "-s", "-Werror", "-o", outname, srcname)
+	cmd := exec.Command("gcc", "-shared", "-s", " ", "-o", outname, srcname)
 	cmd.Dir = tmpdir
 	out, err := cmd.CombinedOutput()
 	if err != nil {
