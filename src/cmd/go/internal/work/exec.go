@@ -8,8 +8,20 @@ package work
 
 import (
 	"bytes"
+	"cmd/go/internal/base"
+	"cmd/go/internal/cache"
+	"cmd/go/internal/cfg"
+	"cmd/go/internal/fsys"
+	"cmd/go/internal/gover"
+	"cmd/go/internal/load"
+	"cmd/go/internal/modload"
+	"cmd/go/internal/str"
+	"cmd/go/internal/trace"
+	"cmd/internal/buildid"
 	"cmd/internal/cov/covcmd"
 	"cmd/internal/pathcache"
+	"cmd/internal/quoted"
+	"cmd/internal/sys"
 	"context"
 	"crypto/sha256"
 	"encoding/json"
@@ -32,19 +44,6 @@ import (
 	"strings"
 	"sync"
 	"time"
-
-	"cmd/go/internal/base"
-	"cmd/go/internal/cache"
-	"cmd/go/internal/cfg"
-	"cmd/go/internal/fsys"
-	"cmd/go/internal/gover"
-	"cmd/go/internal/load"
-	"cmd/go/internal/modload"
-	"cmd/go/internal/str"
-	"cmd/go/internal/trace"
-	"cmd/internal/buildid"
-	"cmd/internal/quoted"
-	"cmd/internal/sys"
 )
 
 const DefaultCFlags = "-O2 -g"
@@ -2300,9 +2299,9 @@ func (b *Builder) compilerCmd(compiler []string, incdir, workdir string) []strin
 	// zig cc passes --gc-sections to the underlying linker, which then causes
 	// undefined symbol errors when compiling with cgo but without C code.
 	// https://github.com/golang/go/issues/52690
-	if b.gccSupportsFlag(compiler, "-Wl,--no-gc-sections") {
-		a = append(a, "-Wl,--no-gc-sections")
-	}
+	//if b.gccSupportsFlag(compiler, "-Wl,--no-gc-sections") {
+	//	a = append(a, "-Wl,--no-gc-sections")
+	//}
 
 	// disable word wrapping in error messages
 	a = append(a, "-fmessage-length=0")

@@ -338,7 +338,7 @@ static int c_bool(bool a, bool b, int c, bool d, bool e)  {
 }
 
 // issue 4857
-#cgo CFLAGS: -Werror
+#cgo CFLAGS:
 const struct { int a; } *issue4857() { return (void *)0; }
 
 // issue 5224

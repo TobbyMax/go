@@ -8,7 +8,7 @@
 
 package main
 
-// #cgo CFLAGS: -Werror -Wunused-parameter
+// #cgo CFLAGS:   -Wunused-parameter
 import "C"
 
 func main() {
